@@ -67,10 +67,7 @@ function monCall() {
                 monRender();
                 apiCall2();
                 // console.log(monStats);
-
             })
-
-
     }
 
 }
