@@ -4,11 +4,7 @@ const BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
 
 // Variables - Data that DOES change
 
-let physicalData;
-let dexData;
 let generationNum;
-let pageDex = [];
-let totalDex = [];
 
 let monAPI;
 let monStats;
@@ -28,12 +24,11 @@ let monArray = [];
 const $form = $('form');
 const $dex = $('#dex-section');
 const $card = $('.card-inner');
-const $entry = $('.back');
 
 // Event Listeners
 $form.on('submit', handleSubmit);
 
-$(document).on('click', '.card', function(event){
+$(document).on('click', '.card', function (event) {
     $(this).toggleClass('flipped');
 })
 
@@ -42,8 +37,6 @@ $(document).on('click', '.card', function(event){
 
 
 function handleSubmit(event) {
-    totalDex.length = 0;
-    pageDex.length = 0;
     $dex.empty();
     event.preventDefault();
     $(document).scrollTop(0);
@@ -64,10 +57,7 @@ function apiCall() {
 
 
 
-
-
 function monCall() {
-
     for (let i = 0; i < monAPI.results.length; i++) {
         $.ajax(`${monAPI.results[i].url}`)
             .then(function (monObj) {
@@ -75,18 +65,17 @@ function monCall() {
                 // monArray.push(monStats);
                 // monArray = monStats.map(({id, name, weight, height, sprites}) => ({id, name, weight, height, sprites}));
                 monRender();
-                // localStorage.setItem("monInfo", JSON.stringify(monStats));
+                apiCall2();
                 // console.log(monStats);
 
             })
 
 
-}
+    }
 
 }
 
 function apiCall2() {
-    console.log(monArray);
     $.ajax(`${BASE_URL}-species`)
         .then(function (dexURL) {
             dexAPI = dexURL;
@@ -103,7 +92,7 @@ function dexCall() {
                 dexEntry = dexObj;
                 // console.log(dexEntry);
                 // console.log(dexEntry.flavor_text_entries[0].flavor_text);
-                // dexRender();
+                dexRender();
             })
     }
 }
