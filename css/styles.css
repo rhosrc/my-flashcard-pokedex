@@ -2,6 +2,7 @@ body {
     text-align: center;
     background-color: #ff8585;
     color:  white;
+    font-family: Helvetica;
 }
 
 main {
@@ -67,7 +68,7 @@ main {
 /* Flipping cards horizontally */
 .card .back {
     /* background: #ee1515; */
-    background-image: url("https://www.pngmart.com/files/2/Pokeball-PNG-Photos.png");
+    background-image: url("https://i.imgur.com/caNCiGf.png");
     background-size: 200px;
    
     /* -webkit-transform: rotateY(180deg); */
@@ -93,7 +94,6 @@ main {
 .entry {
     margin: auto 20px;
     font-size: 1.25rem;
-    opacity: 1;
-    color: blue;
+    color: white;
     font-weight: bold;
 }
