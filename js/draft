@@ -1,0 +1,155 @@
+$.ajax(`${BASE_URL}?limit=898`)
+.then(function (physicalChar) {
+    physicalData = physicalChar;
+    for (let i = 0; i < physicalData.results.length; i++) {
+        fetch(physicalData.results[i].url)
+            .then(response => response.json())
+            .then(function (pokeData) {
+                // for (let i=0; i < pokeData.length; i++) {
+                //     console.log(pokeData[i]);
+                // }
+                
+                
+                
+            })
+            
+        } totalDex.push(pokeData);
+        console.log(totalDex);
+  
+  // console.log(totalDex.length);
+            // console.log(totalDex);
+
+            // totalDex.sort(function (a, b) {
+            //     return a.id - b.id;
+            // })
+            // console.log(totalDex);
+
+            // Promise.all(this.state.pokemon.map(poke => {
+            //     return fetch(...).then(res => res.json())
+            // })).then(results => {
+            //     process all the results here in order
+            // })
+
+            // switch (generationNum) {
+            //     case 1:
+            //         console.log(totalDex.slice(0, 150));
+            //         // console.log(pageDex);
+            //         break;
+
+            //     case 2:
+            //         console.log(totalDex.slice(151, 250));
+            //         // console.log(pageDex);
+            //         break;
+
+            //     case 3:
+            //     break;
+
+            //     case 4:
+            //     break;
+
+            //     case 5:
+            //     break;
+
+            //     case 6:
+            //     break;
+
+            //     case 7:
+            //     break;
+
+            //     case 8:
+            //     break;
+            // }
+            // render();
+            // $('select').prop('selectedIndex', 0);
+
+            //     pageDex = totalDex.slice(0, 150);
+            // console.log(pageDex);
+
+
+
+
+
+
+            Promise.all([
+                fetch(`${BASE_URL}?limit=898`),
+                fetch(`${BASE_URL}-species`)
+            ])
+                .then (function(responses) {
+                    return Promise.all(responses.map(function(response) {
+                        return response.json();
+                    }));
+                }).then (function (data) {
+                // (res => res.json())
+                // .then(function (data) {
+                    // physicalData = data;
+                    console.log(data);
+                    
+                    // return fetch()
+                    // for (let i = 0; i < monArray.results.length; i++) {
+                    //     fetch(monArray.results[i].url)
+                    //         .then(res => res.json())
+                    //         .then(function (monData) {
+                    //             monData = physicalData;
+                    //             console.log(physicalData);
+                    //             render(monData);
+                    //         })
+                    // }
+                }) 
+            }
+            // for (let i=0; i<physicalData.length; i++) {
+            //     totalDex.push(physicalData[i]);
+            // }
+           
+            // console.log(physicalData);
+            // fetch(`${BASE_URL}-species`)
+            // .then(res => res.json())
+            // .then(function (dexArray){
+            //     for (let i=0; i<dexArray.results.length; i++) {
+            //         fetch(dexArray.results[i].url)
+            //         .then(res => res.json())
+            //         .then(function (dexData) {
+            //             console.log(dexData);
+            //             render(dexData);
+            //         })
+            //     }
+            // })
+        
+        
+        
+            // for (let i=0; i < data.)
+            //     console.log(pokeData);
+            // })
+            //     for (let i = 0; i < physicalData.results.length; i++) {
+            //         fetch(physicalData.results[i].url)
+            //             .then(response => response.json())
+            //             .then(function (pokeData) {
+            //                 // for (let i=0; i < pokeData.length; i++) {
+            //                 //     console.log(pokeData[i]);
+            //                 // }
+        
+        
+        
+            //             })
+        
+            //         } totalDex.push(pokeData);
+            //         console.log(totalDex);
+            // })
+        
+            // console.log(totalDex);
+            // totalDex.sort(function (a, b) {
+            //     return a.id - b.id;
+            // });
+            // console.log(totalDex);
+        
+        
+        
+        function flip() {
+            $('.card').toggleClass('flipped');
+        }
+        
+        function render(monData) {
+            // console.log(monData.length);
+            $dex.append(
+                `<div class="pkmn-container">
+                <p>${monData.id}</p>
+                <p><strong>${monData.name.toUpperCase()}</strong></p>

@@ -1,23 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script defer src="./js/script.js"></script>
     <title>My Flashcard PokéDex!</title>
 </head>
+
 <body>
     <header>
-<h1>Welcome to My Flashcard PokéDex!</h1>
+        <h1>Welcome to My Flashcard PokéDex!</h1>
     </header>
     <main>
-
+        <section id="dex-section">
+        </section>
+        <section>
+            <form>
+                <label id="drop-down">
+                    Which generation would you like Dex info for?
+                    <select name="gen" id="gen">
+                            <option value="1">Gen I</option>
+                            <option value="2">Gen II</option>
+                            <option value="3">Gen III</option>
+                            <option value="4">Gen IV</option>
+                            <option value="5">Gen V</option>
+                            <option value="6">Gen VI</option>
+                            <option value="7">Gen VII</option>
+                            <option value="8">Gen VIII</option>
+                    </select>
+                </label>
+                <input id="get-info" type="submit" value="Get Dex Info!">
+            </form>
+        </section>
     </main>
     <footer>
-        Copyright &copy; 2021 by Chris L. All rights reserved.
+        <p>Copyright &copy; 2021 by Chris L.</p>
+        <p>All rights reserved.</p>
     </footer>
 </body>
+
 </html>
