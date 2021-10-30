@@ -8,6 +8,7 @@ let generationNum;
 
 let monAPI;
 let monStats;
+let speciesStats;
 let dexAPI;
 let dexEntry;
 let monArray = [];
@@ -64,35 +65,44 @@ function monCall() {
                 monStats = monObj;
                 // monArray.push(monStats);
                 // monArray = monStats.map(({id, name, weight, height, sprites}) => ({id, name, weight, height, sprites}));
+
+                $.ajax(monStats.species.url)
+                    .then(function (speciesData) {
+                        speciesStats = speciesData;
+                        console.log(speciesStats.flavor_text_entries[1].flavor_text);
+                    })
+
+
                 monRender();
-                apiCall2();
+                // apiCall2();
                 // console.log(monStats);
             })
+        // .then(monStats.species.url);
     }
 
 }
 
-function apiCall2() {
-    $.ajax(`${BASE_URL}-species`)
-        .then(function (dexURL) {
-            dexAPI = dexURL;
-            // console.log(dexAPI);
-            dexCall();
-            // console.log(monStats);
-        })
-}
+// function apiCall2() {
+//     $.ajax(`${BASE_URL}-species`)
+//         .then(function (dexURL) {
+//             dexAPI = dexURL;
+//             // console.log(dexAPI);
+//             dexCall();
+//             // console.log(monStats);
+//         })
+// }
 
-function dexCall() {
-    for (let i = 0; i < dexAPI.results.length; i++) {
-        $.ajax(`${dexAPI.results[i].url}`)
-            .then(function (dexObj) {
-                dexEntry = dexObj;
-                // console.log(dexEntry);
-                // console.log(dexEntry.flavor_text_entries[0].flavor_text);
-                dexRender();
-            })
-    }
-}
+// function dexCall() {
+//     for (let i = 0; i < dexAPI.results.length; i++) {
+//         $.ajax(`${dexAPI.results[i].url}`)
+//             .then(function (dexObj) {
+//                 dexEntry = dexObj;
+//                 // console.log(dexEntry);
+//                 // console.log(dexEntry.flavor_text_entries[0].flavor_text);
+//                 dexRender();
+//             })
+//     }
+// }
 
 function monRender() {
     $dex.append(
@@ -104,6 +114,7 @@ function monRender() {
             <img class="imeji" src="${monStats.sprites.other["official-artwork"].front_default}">
             </div>
             <div class="back">
+            <p class="entry">${speciesStats.flavor_text_entries[1].flavor_text}</p>
             </div>
         </div>
     </div>
@@ -116,8 +127,8 @@ function monRender() {
     )
 }
 
-function dexRender() {
-    $('.card .back').html(
-        `<p class="entry">${dexEntry.flavor_text_entries[0].flavor_text}</p>`
-    )
-}
+// function dexRender() {
+//     $('.card .back').html(
+//         `<p class="entry">${dexEntry.flavor_text_entries[0].flavor_text}</p>`
+//     )
+// }
