@@ -93,7 +93,13 @@ main {
 
 .entry {
     margin: auto 20px;
-    font-size: 1.25rem;
+    font-size: 1rem;
     color: white;
     font-weight: bold;
+}
+
+.splash img {
+  max-height:200px;
+  width: auto;
+  height: auto;
 }
