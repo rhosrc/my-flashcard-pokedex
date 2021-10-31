@@ -20,7 +20,8 @@ let dexEntry;
 const $form = $('form');
 const $dex = $('#dex-section');
 const $card = $('.card-inner');
-const $splash = $('.splash')
+const $splash = $('.splash');
+const $top =  $('#page-up');
 
 // Event Listeners
 $form.on('submit', handleSubmit);
@@ -100,7 +101,11 @@ function handleSubmit(event) {
     }
 
     $splash.html(
-        `<img src=${imageURL}>`
+        `<a href="#drop-down"><img src=${imageURL}><a>`
+    )
+
+    $top.html(
+        `<a href="#dex-section"><p>TOP</p></a>`
     )
 
     apiCall();
