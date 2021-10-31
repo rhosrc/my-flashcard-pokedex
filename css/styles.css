@@ -83,7 +83,7 @@ footer {
     justify-content: center;
     align-items: center;
     position: absolute;
-    /* -webkit-backface-visibility: hidden; */
+    -webkit-backface-visibility: hidden;
     /* -moz-backface-visibility: hidden;
     -o-backface-visibility: hidden; */
     backface-visibility: hidden;
@@ -99,7 +99,7 @@ footer {
     background-image: url("https://i.imgur.com/caNCiGf.png");
     background-size: 200px;
 
-    /* -webkit-transform: rotateY(180deg); */
+    -webkit-transform: rotateY(180deg);
     /* -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg); */
     transform: rotateY(180deg);
@@ -107,7 +107,7 @@ footer {
 
 /* When the cards already have the "flipped" class but need to flip again */
 .card.flipped {
-    /* -webkit-transform: rotateY(180deg); */
+    -webkit-transform: rotateY(180deg);
     /* -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg); */
     transform: rotateY(180deg);
