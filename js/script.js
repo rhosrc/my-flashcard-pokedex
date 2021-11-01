@@ -11,7 +11,7 @@ let dexArray = [];
 let limit;
 let offset;
 let imageURL;
-let dexEntry;
+let dexObject;
 let firstType;
 let firstColor;
 let secondColor;
@@ -94,6 +94,11 @@ let pokemonTypes = [{
     },
 ];
 
+let entryLanguage = [{
+    name: 'en',
+    langName: 'English'
+}];
+
 // Cached Element References
 
 const $form = $('form');
@@ -140,7 +145,7 @@ function handleSubmit(event) {
         case '3':
             limit = 135;
             offset = 251;
-            imageURL = "https://64.media.tumblr.com/tumblr_ls9dq0o2VH1r3mwpgo1_500.gifv";
+            imageURL = "https://i.gifer.com/DXwp.gif";
             dexLang = 0;
             break;
         case '4':
@@ -153,7 +158,7 @@ function handleSubmit(event) {
         case '5':
             limit = 156;
             offset = 493;
-            imageURL = "https://thumbs.gfycat.com/ConventionalPoorBufflehead-size_restricted.gif";
+            imageURL = "https://pa1.narvii.com/7523/90722aa320ad6ed69c010293e41a42ee2e3864b4r1-500-364_hq.gif";
             dexLang = 1;
             break;
         case '6':
@@ -222,7 +227,7 @@ function apiCall() {
                     .then(function (data) {
                         $.ajax(data.species.url)
                             .then(function (dexInfo) {
-                                console.log(dexInfo.flavor_text_entries);
+                                // console.log(dexInfo.flavor_text_entries);
                                 dexArray.push(dexInfo);
                                 // console.log(dexArray);
                             })
@@ -231,6 +236,7 @@ function apiCall() {
 
             setTimeout(() => {
                 dexArray.sort((a, b) => (a.id > b.id) ? 1 : -1);
+
                 dexRender(dexArray);
                 // console.log(dexArray);
             }, 2000);
@@ -250,19 +256,14 @@ function monRender(monarray) {
             // console.log(numOfTypes);
             if (numOfTypes === 2) {
                 secondType = mon.types[i].type;
-            } else if (numOfTypes === 1){
+            } else if (numOfTypes === 1) {
                 secondType = firstType;
             }
             searchOtherType = pokemonTypes.find(obj => {
                 return obj.name === secondType.name;
             })
-        secondColor = searchOtherType.hex;
+            secondColor = searchOtherType.hex;
         }
-
-        // for (let i=0; i < mon.types.length; i++) {
-
-        // }
-
 
         $dex.append(
             `<div class="pkmn-container">
@@ -293,13 +294,56 @@ function monRender(monarray) {
 
 }
 
-function dexRender() {
-    // console.log(dexArray.length);
+function dexRender(dexarray) {
+
+    // for (dex of dexarray) {
+        // - OR - for loop?
+
+    // dexObject = dex.flavor_text_entries.filter(obj =>
+    //     obj.language.name === 'en'
+    // );
+    // 
+
+    // - OR - (using for loop)
+
+    // dexObject = dexArray[i].flavor_text_entries.find(obj => {
+        //     return obj.language.name === 'en';
+        // });
+
+
+    // for (let i=0; i<dex.flavor_text_entries.length; i++) {
+    // // console.log(dexArray[i].flavor_text_entries[i]);
+    // // console.log(dex.flavor_text_entries)
+
+    // for (let i = 0; i < dexArray.length; i++) {
+    //     // for (let i = 0; i < dexArray[i].flavor_text_entries.length; i++) {
+    //     // console.log(dexArray[i].flavor_text_entries.length);
+    //     for (dex of dexArray[i].flavor_text_entries) {
+    //         dexObject = dexArray[i].flavor_text_entries.find(obj => {
+    //             return obj.language.name === 'en';
+    //         });
+    //         console.log(dexObject.length);
+    // 
+    // console.log(dexObject.flavor_text);
+
+    // }
+
+    // }
+
+    //     }
+    // }
+
+
+
     for (let i = 0; i < dexArray.length; i++) {
-        // dexEntry = dexArray.filter(el => el.flavor_text_entries.language.name === 'en');
-        // console.log(dexEntry);
         $('.entry')[i].append(
+            // dexLang from switch statement holds the largest overall number of 
+            // English-language entry objects.
             `${dexArray[i].flavor_text_entries[dexLang].flavor_text}`
+            //         // `${dexObject.flavor_text}`
         )
     }
 }
+// }
+
+// console.log(entryLanguage[0].name)
