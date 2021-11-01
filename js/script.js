@@ -222,7 +222,7 @@ function apiCall() {
                     .then(function (data) {
                         $.ajax(data.species.url)
                             .then(function (dexInfo) {
-                                // console.log(dexInfo);
+                                console.log(dexInfo.flavor_text_entries);
                                 dexArray.push(dexInfo);
                                 // console.log(dexArray);
                             })
@@ -258,6 +258,10 @@ function monRender(monarray) {
             })
         secondColor = searchOtherType.hex;
         }
+
+        // for (let i=0; i < mon.types.length; i++) {
+
+        // }
 
 
         $dex.append(
