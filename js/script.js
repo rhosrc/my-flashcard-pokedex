@@ -117,6 +117,7 @@ $(document).on('click', '.card', function (event) {
 })
 
 
+
 // Functions
 
 
@@ -133,52 +134,44 @@ function handleSubmit(event) {
             limit = 151;
             offset = 0;
             imageURL = "https://c.tenor.com/e_esKa2BR0EAAAAC/pokemon-battle-pokemon.gif";
-            dexLang = 0;
             break;
         case '2':
             limit = 100;
             offset = 151;
             imageURL = "https://cutewallpaper.org/21/pokemon-background-gif/Pokemon-Gold-PC-Desktop-Background-Animations-UPDATED-.gif";
-            dexLang = 0;
             break;
 
         case '3':
             limit = 135;
             offset = 251;
             imageURL = "https://i.gifer.com/DXwp.gif";
-            dexLang = 0;
             break;
         case '4':
             limit = 107;
             offset = 386;
             imageURL = "http://www.simbasible.com/wp-content/uploads/2018/03/11-5.gif";
-            dexLang = 0;
             break;
 
         case '5':
             limit = 156;
             offset = 493;
             imageURL = "https://pa1.narvii.com/7523/90722aa320ad6ed69c010293e41a42ee2e3864b4r1-500-364_hq.gif";
-            dexLang = 1;
             break;
         case '6':
             limit = 72;
             offset = 649;
             imageURL = "https://31.media.tumblr.com/f82ce74f536c87ecbcab75b7862ccb27/tumblr_mt4j2cW4iQ1sxmzrgo1_500.gif";
-            dexLang = 6;
             break;
 
         case '7':
             limit = 88;
             offset = 721;
             imageURL = "https://apptrigger.com/files/2016/05/sunmoon1.gif"
-            dexLang = 7;
             break;
         case '8':
             limit = 89;
             offset = 809;
             imageURL = "https://thumbs.gfycat.com/CharmingIdolizedCob-size_restricted.gif"
-            dexLang = 7;
             break;
 
         default:
@@ -189,13 +182,10 @@ function handleSubmit(event) {
     $splash.html(
         `<a href="#drop-down"><img src=${imageURL}><a>`
     )
-
     $top.html(
         `<a href="#dex-section"><p>TOP</p></a>`
     )
-
     apiCall();
-
 }
 
 
@@ -203,14 +193,11 @@ function apiCall() {
 
     $.ajax(`${BASE_URL}?limit=${limit}&offset=${offset}`)
         .then(function (monURL) {
-            // console.log(monURL);
             monAPI = monURL;
 
             for (api of monAPI.results) {
                 $.ajax(api.url)
                     .then(function (data) {
-                        // console.log(data['types']);
-
                         monArray.push(data);
                     })
             }
@@ -233,10 +220,9 @@ function apiCall() {
                             })
                     })
             }
-
             setTimeout(() => {
                 dexArray.sort((a, b) => (a.id > b.id) ? 1 : -1);
-
+                // console.log(dexArray);
                 dexRender(dexArray);
                 // console.log(dexArray);
             }, 2000);
@@ -289,61 +275,18 @@ function monRender(monarray) {
             </div> 
             `
         )
-
     }
-
 }
 
 function dexRender(dexarray) {
-
-    // for (dex of dexarray) {
-        // - OR - for loop?
-
-    // dexObject = dex.flavor_text_entries.filter(obj =>
-    //     obj.language.name === 'en'
-    // );
-    // 
-
-    // - OR - (using for loop)
-
-    // dexObject = dexArray[i].flavor_text_entries.find(obj => {
-        //     return obj.language.name === 'en';
-        // });
-
-
-    // for (let i=0; i<dex.flavor_text_entries.length; i++) {
-    // // console.log(dexArray[i].flavor_text_entries[i]);
-    // // console.log(dex.flavor_text_entries)
-
-    // for (let i = 0; i < dexArray.length; i++) {
-    //     // for (let i = 0; i < dexArray[i].flavor_text_entries.length; i++) {
-    //     // console.log(dexArray[i].flavor_text_entries.length);
-    //     for (dex of dexArray[i].flavor_text_entries) {
-    //         dexObject = dexArray[i].flavor_text_entries.find(obj => {
-    //             return obj.language.name === 'en';
-    //         });
-    //         console.log(dexObject.length);
-    // 
-    // console.log(dexObject.flavor_text);
-
-    // }
-
-    // }
-
-    //     }
-    // }
-
-
-
-    for (let i = 0; i < dexArray.length; i++) {
+    for (let i = 0; i < dexarray.length; i++) {
+        dexObject = dexarray[i].flavor_text_entries.filter(obj =>
+            obj.language.name === 'en'
+        );
+        // 
+        dexEntry = dexObject[0].flavor_text;
         $('.entry')[i].append(
-            // dexLang from switch statement holds the largest overall number of 
-            // English-language entry objects.
-            `${dexArray[i].flavor_text_entries[dexLang].flavor_text}`
-            //         // `${dexObject.flavor_text}`
+            `${dexEntry}`
         )
     }
 }
-// }
-
-// console.log(entryLanguage[0].name)

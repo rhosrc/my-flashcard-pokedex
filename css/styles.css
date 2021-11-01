@@ -16,6 +16,10 @@ h1 {
     -webkit-text-stroke: 3.5px black;
 }
 
+#theme {
+    display: none; 
+}
+
 main {
     flex-grow: 1;
 }
