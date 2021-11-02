@@ -188,11 +188,6 @@ function handleSubmit(event) {
     apiCall();
 }
 
-function playAudio(url) {
-    new Audio('goldtheme.mp3').play();
-    $()
-}
-
 function apiCall() {
 
     $.ajax(`${BASE_URL}?limit=${limit}&offset=${offset}`)
