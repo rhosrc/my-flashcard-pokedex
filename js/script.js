@@ -217,7 +217,7 @@ function apiCall() {
                 // Array is full of asynchronously pushed objects that need to be sorted. Once completed, information can be rendered.
 
                 monRender();
-            }, 2500);
+            }, 3000);
 
             for (api of monAPI.results) {
                 $.ajax(api.url)
@@ -244,7 +244,7 @@ function apiCall() {
 
                 dexRender();
 
-            }, 2500);
+            }, 3000);
         })
 }
 
