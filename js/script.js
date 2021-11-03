@@ -103,7 +103,6 @@ const $dex = $('#dex-section');
 const $card = $('.card .front');
 const $splash = $('.splash');
 const $top = $('#page-up');
-const $diagonal = $('.diagonal');
 
 
 
@@ -217,8 +216,8 @@ function apiCall() {
 
                 // Array is full of asynchronously pushed objects that need to be sorted. Once completed, information can be rendered.
 
-                monRender(monArray);
-            }, 2000);
+                monRender();
+            }, 2500);
 
             for (api of monAPI.results) {
                 $.ajax(api.url)
@@ -243,15 +242,15 @@ function apiCall() {
                 // Again, the array of Pokémon "species" is out of order due to the asynchronous nature of the calls, and must be sorted.
                 // Then we can render the Dex info that will be on the back of the cards.
 
-                dexRender(dexArray);
+                dexRender();
 
-            }, 2000);
+            }, 2500);
         })
 }
 
 
-function monRender(monarray) {
-    for (mon of monarray) {
+function monRender() {
+    for (mon of monArray) {
 
         // The name of each Pokémon's primary type is matched via find method to the Types array defined up at line 5. 
         // This returns an object with a corresponding hex code for the card's background color.
@@ -323,13 +322,13 @@ function monRender(monarray) {
 // Dex info goes on the back of each card. Similarly, we pass the sorted array of "species" information to the function as an argument.
 // We loop through each Pokémon's info. 
 
-function dexRender(dexarray) {
-    for (let i = 0; i < dexarray.length; i++) {
+function dexRender() {
+    for (let i = 0; i < dexArray.length; i++) {
 
         // For each Pokémon, we filter to create an array of only English-language Pokédex entries. 
         // (The array index or position of English-language info changes from Pokémon to Pokémon.)
 
-        dexObject = dexarray[i].flavor_text_entries.filter(obj =>
+        dexObject = dexArray[i].flavor_text_entries.filter(obj =>
             obj.language.name === 'en'
         );
 
