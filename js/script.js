@@ -185,7 +185,7 @@ function handleSubmit(event) {
     // adds a scroll down and scroll up link to page...
 
     $splash.html(
-        `<a id="top" href="#drop-down"><img src=${imageURL}><a>`
+        `<a href="#drop-down"><img id="top" src=${imageURL}><a>`
     )
     $top.html(
         `<a href="#top"><p>TOP</p></a>`
