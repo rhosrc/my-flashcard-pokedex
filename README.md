@@ -1,6 +1,6 @@
 # My Flashcard Pokédex
 
-A simple encyclopedia app for Pokédex entries!
+A simple encyclopedia app for Pokédex entries! Test your knowledge of Pokémon characteristics.
 
 ## Technologies Used
 
@@ -32,6 +32,6 @@ Though it includes all main game generations, this Dex does not include Form cha
 
 ## Stretch Goals
 
-Code-wise, if possible, I would like to refactor the Javascript to operate without a setTimeout function, instead utilizing more advanced AJAX functions. I'd like to simplify the HTML I used for the cards, but that comes with understanding the CSS for flipping cards more clearly. 
+Code-wise, if possible, I would like to refactor the Javascript to operate without a setTimeout function, instead utilizing more advanced AJAX functions. I'd like to simplify the HTML structure and CSS I used for the cards, but that comes with understanding the CSS for flipping cards more clearly. 
 
 I'd also like to add a small audio button with a mute feature. It would be positioned at the corner of the header image and play a short musical loop from the selected game generation!

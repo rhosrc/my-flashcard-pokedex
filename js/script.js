@@ -2,24 +2,6 @@
 
 const BASE_URL = 'https://pokeapi.co/api/v2/pokemon';
 
-// Variables - Data that DOES change
-
-let selectionNum;
-let monAPI;
-let monArray = [];
-let dexArray = [];
-let limit;
-let offset;
-let imageURL;
-let dexObject;
-let firstType;
-let firstColor;
-let secondColor;
-let secondType;
-let numOfTypes;
-
-
-
 let pokemonTypes = [{
         name: 'bug',
         hex: '#a8b820'
@@ -94,10 +76,25 @@ let pokemonTypes = [{
     },
 ];
 
-let entryLanguage = [{
-    name: 'en',
-    langName: 'English'
-}];
+
+
+// Variables - Data that DOES change
+
+let selectionNum;
+let limit;
+let offset;
+let imageURL;
+let monAPI;
+let monArray = [];
+let dexArray = [];
+let dexObject;
+let numOfTypes;
+let firstType;
+let firstColor;
+let secondType;
+let secondColor;
+
+
 
 // Cached Element References
 
@@ -109,7 +106,9 @@ const $top = $('#page-up');
 const $diagonal = $('.diagonal');
 
 
+
 // Event Listeners
+
 $form.on('submit', handleSubmit);
 
 $(document).on('click', '.card', function (event) {
@@ -120,14 +119,18 @@ $(document).on('click', '.card', function (event) {
 
 // Functions
 
-
 function handleSubmit(event) {
+
+    // clears previously selected information, scrolls to top, records generation selected...
+
     monArray = [];
     dexArray = [];
     $dex.empty();
     event.preventDefault();
     $(document).scrollTop(0);
     selectionNum = $('select option').filter(':selected').val();
+
+    // based on generation chosen, prepares values for header gif and clipping of Pokémon entries...
 
     switch (selectionNum) {
         case '1':
@@ -179,12 +182,17 @@ function handleSubmit(event) {
             break;
     }
 
+    // adds a scroll down and scroll up link to page...
+
     $splash.html(
         `<a href="#drop-down"><img src=${imageURL}><a>`
     )
     $top.html(
         `<a href="#dex-section"><p>TOP</p></a>`
     )
+
+    // lastly, sends call to the Pokémon API.
+
     apiCall();
 }
 
@@ -197,13 +205,17 @@ function apiCall() {
             for (api of monAPI.results) {
                 $.ajax(api.url)
                     .then(function (data) {
+
+                        // pushes each Pokémon object (containing properties for ID, type, "species," and physical information) into an array to be sorted
+
                         monArray.push(data);
                     })
             }
 
             setTimeout(() => {
                 monArray.sort((a, b) => (a.id > b.id) ? 1 : -1);
-                // console.log('Monnnn', monArray);
+
+                // Array is full of asynchronously pushed objects that need to be sorted. Once completed, information can be rendered.
 
                 monRender(monArray);
             }, 2000);
@@ -211,19 +223,28 @@ function apiCall() {
             for (api of monAPI.results) {
                 $.ajax(api.url)
                     .then(function (data) {
+
+                        // the "species" property contains individual URLS to Pokédex species information, one property of which 
+                        // is referred to as "flavor text". First, we make a call for this detailed species information.
+
                         $.ajax(data.species.url)
                             .then(function (dexInfo) {
-                                // console.log(dexInfo.flavor_text_entries);
+
+                                // returns objects with properties like happiness, capture rate, etc. (What we will later be needing is "flavor text entries."
+                                // similar to above, we push each detailed "species" object into an array. 
+
                                 dexArray.push(dexInfo);
-                                // console.log(dexArray);
                             })
                     })
             }
             setTimeout(() => {
                 dexArray.sort((a, b) => (a.id > b.id) ? 1 : -1);
-                // console.log(dexArray);
+
+                // Again, the array of Pokémon "species" is out of order due to the asynchronous nature of the calls, and must be sorted.
+                // Then we can render the Dex info that will be on the back of the cards.
+
                 dexRender(dexArray);
-                // console.log(dexArray);
+
             }, 2000);
         })
 }
@@ -231,24 +252,45 @@ function apiCall() {
 
 function monRender(monarray) {
     for (mon of monarray) {
+
+        // The name of each Pokémon's primary type is matched via find method to the Types array defined up at line 5. 
+        // This returns an object with a corresponding hex code for the card's background color.
+
         firstType = pokemonTypes.find(obj => {
             return obj.name === mon.types[0].type.name;
         })
         firstColor = firstType.hex;
 
+        // Next, we loop through each Pokémon's types property (which takes the form of an array) to figure out if it has 2 types, or only one.
+        // In the case of 1 type, the array will contain one item (an object), in the case of 2 types, two items (two objects).
+
         for (let i = 0; i < mon.types.length; i++) {
             numOfTypes = mon.types.length;
-            // console.log(numOfTypes);
+
+            // If it has 2 types, we collect both objects in the array.
+
             if (numOfTypes === 2) {
                 secondType = mon.types[i].type;
+
+                // Otherwise, we set secondType to be identical to the first. 
+                // In the CSS, I actually use a right triangle to represent primary type, while the secondary type is a square underneath.
+                // So if there is only one type, both will have the same hex code. Hex codes will be interpolated into the inline CSS that will be appended to each card.
+
             } else if (numOfTypes === 1) {
                 secondType = firstType;
             }
-            searchOtherType = pokemonTypes.find(obj => {
+
+            // Given that we have an array of each Pokémon's types object, 
+            // we can run another find method through the pokemonTypes array for each Pokémon's second type for another name match, which will, again, return the corresponding hex code.
+
+            let searchOtherType = pokemonTypes.find(obj => {
                 return obj.name === secondType.name;
             })
             secondColor = searchOtherType.hex;
         }
+
+        // For the front of each card, we loop through each Pokémon's set of info and app, 
+        // interpolating information from the larger Pokémon array that has been passed into this function as an argument.
 
         $dex.append(
             `<div class="pkmn-container">
@@ -277,13 +319,22 @@ function monRender(monarray) {
     }
 }
 
+// Dex info goes on the back of each card. Similarly, we pass the sorted array of "species" information to the function as an argument.
+// We loop through each Pokémon's info. 
+
 function dexRender(dexarray) {
     for (let i = 0; i < dexarray.length; i++) {
+
+        // For each Pokémon, we filter to create an array of only English-language Pokédex entries. 
+        // (The array index or position of English-language info changes from Pokémon to Pokémon.)
+
         dexObject = dexarray[i].flavor_text_entries.filter(obj =>
             obj.language.name === 'en'
         );
-        // 
-        dexEntry = dexObject[0].flavor_text;
+
+        // I'm not picky. We just grab the reference the first one in the array and use it.
+
+        let dexEntry = dexObject[0].flavor_text;
         $('.entry')[i].append(
             `${dexEntry}`
         )
