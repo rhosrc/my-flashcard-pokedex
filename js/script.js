@@ -151,7 +151,7 @@ function handleSubmit(event) {
         case '4':
             limit = 107;
             offset = 386;
-            imageURL = "http://www.simbasible.com/wp-content/uploads/2018/03/11-5.gif";
+            imageURL = "https://www.simbasible.com/wp-content/uploads/2018/03/11-5.gif";
             break;
 
         case '5':
@@ -286,9 +286,7 @@ function monRender() {
 
             let searchOtherType = pokemonTypes.find(obj => {
                 return obj.name === secondType.name;
-            })
-            // console.log(searchOtherType);
-            
+            })            
             secondColor = searchOtherType.hex;
         }
 
