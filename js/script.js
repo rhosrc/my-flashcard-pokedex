@@ -266,7 +266,7 @@ function monRender() {
         for (let i = 0; i < mon.types.length; i++) {
             numOfTypes = mon.types.length;
 
-            // If it has 2 types, we collect both objects in the array.
+            // If it has 2 types, we collect both objects in the array and stop at the second (i.e., last in the array).
 
             if (numOfTypes === 2) {
                 secondType = mon.types[i].type;
@@ -280,13 +280,15 @@ function monRender() {
                 secondType = firstType;
             }
 
-            // Given that we have an array of each Pokémon's types object, 
-            // we can run another find method through the pokemonTypes array for each Pokémon's second type for another name match, 
-            // which will, again, return the corresponding hex code.
+            // Given that we have each Pokémon's secondType object, 
+            // we can run another find method through the names property of the pokemonTypes array to match with each Pokémon's second type, 
+            // which will, again, return an object containing a corresponding hex code.
 
             let searchOtherType = pokemonTypes.find(obj => {
                 return obj.name === secondType.name;
             })
+            // console.log(searchOtherType);
+            
             secondColor = searchOtherType.hex;
         }
 
