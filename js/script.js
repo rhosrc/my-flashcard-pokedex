@@ -185,10 +185,10 @@ function handleSubmit(event) {
     // adds a scroll down and scroll up link to page...
 
     $splash.html(
-        `<a href="#drop-down"><img src=${imageURL}><a>`
+        `<a id="top" href="#drop-down"><img src=${imageURL}><a>`
     )
     $top.html(
-        `<a href="#dex-section"><p>TOP</p></a>`
+        `<a href="#top"><p>TOP</p></a>`
     )
 
     // lastly, sends call to the Pokémon API.
@@ -274,7 +274,8 @@ function monRender(monarray) {
 
                 // Otherwise, we set secondType to be identical to the first. 
                 // In the CSS, I actually use a right triangle to represent primary type, while the secondary type is a square underneath.
-                // So if there is only one type, both will have the same hex code. Hex codes will be interpolated into the inline CSS that will be appended to each card.
+                // So if there is only one type, both will have the same hex code. 
+                // Hex codes will be interpolated into the inline CSS that will be appended to each card.
 
             } else if (numOfTypes === 1) {
                 secondType = firstType;
@@ -289,8 +290,8 @@ function monRender(monarray) {
             secondColor = searchOtherType.hex;
         }
 
-        // For the front of each card, we loop through each Pokémon's set of info and app, 
-        // interpolating information from the larger Pokémon array that has been passed into this function as an argument.
+        // For the front of each card, we loop through each Pokémon's set of info, 
+        // interpolating information from the original, sorted Pokémon array that has been passed into this function as an argument.
 
         $dex.append(
             `<div class="pkmn-container">
