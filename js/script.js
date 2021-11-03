@@ -87,7 +87,7 @@ let imageURL;
 let monAPI;
 let monArray = [];
 let dexArray = [];
-let dexObject;
+let dexEntries;
 let numOfTypes;
 let firstType;
 let firstColor;
@@ -120,7 +120,7 @@ $(document).on('click', '.card', function (event) {
 
 function handleSubmit(event) {
 
-    // clears previously selected information, scrolls to top, records generation selected...
+    // Clears previously selected information, scrolls to top, records generation selected...
 
     monArray = [];
     dexArray = [];
@@ -205,7 +205,7 @@ function apiCall() {
                 $.ajax(api.url)
                     .then(function (data) {
 
-                        // pushes each Pokémon object (containing properties for ID, type, "species," and physical information) into an array to be sorted
+                        // Pushes each Pokémon object (containing properties for ID, type, "species," and physical information) into an array to be sorted
 
                         monArray.push(data);
                     })
@@ -223,14 +223,14 @@ function apiCall() {
                 $.ajax(api.url)
                     .then(function (data) {
 
-                        // the "species" property contains individual URLS to Pokédex species information, one property of which 
+                        // The "species" property contains individual URLS to Pokédex species information, one property of which 
                         // is referred to as "flavor text". First, we make a call for this detailed species information.
 
                         $.ajax(data.species.url)
                             .then(function (dexInfo) {
 
-                                // returns objects with properties like happiness, capture rate, etc. (What we will later be needing is "flavor text entries."
-                                // similar to above, we push each detailed "species" object into an array. 
+                                // Returns objects with properties like happiness, capture rate, etc. (What we will later be needing is "flavor text entries."
+                                // Similar to with the monAPI call, we push each detailed "species" object into an array. 
 
                                 dexArray.push(dexInfo);
                             })
@@ -281,7 +281,8 @@ function monRender() {
             }
 
             // Given that we have an array of each Pokémon's types object, 
-            // we can run another find method through the pokemonTypes array for each Pokémon's second type for another name match, which will, again, return the corresponding hex code.
+            // we can run another find method through the pokemonTypes array for each Pokémon's second type for another name match, 
+            // which will, again, return the corresponding hex code.
 
             let searchOtherType = pokemonTypes.find(obj => {
                 return obj.name === secondType.name;
@@ -320,7 +321,7 @@ function monRender() {
 }
 
 // Dex info goes on the back of each card. Similarly, we pass the sorted array of "species" information to the function as an argument.
-// We loop through each Pokémon's info. 
+// We then loop through each Pokémon's info. 
 
 function dexRender() {
     for (let i = 0; i < dexArray.length; i++) {
@@ -328,13 +329,13 @@ function dexRender() {
         // For each Pokémon, we filter to create an array of only English-language Pokédex entries. 
         // (The array index or position of English-language info changes from Pokémon to Pokémon.)
 
-        dexObject = dexArray[i].flavor_text_entries.filter(obj =>
+        dexEntries = dexArray[i].flavor_text_entries.filter(obj =>
             obj.language.name === 'en'
         );
 
-        // I'm not picky. We just grab the reference the first one in the array and use it.
+        // I'm not picky. We'll just grab the first reference in the array and use that.
 
-        let dexEntry = dexObject[0].flavor_text;
+        let dexEntry = dexEntries[0].flavor_text;
         $('.entry')[i].append(
             `${dexEntry}`
         )
