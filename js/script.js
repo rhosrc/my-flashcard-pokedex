@@ -135,45 +135,45 @@ function handleSubmit(event) {
         case '1':
             limit = 151;
             offset = 0;
-            imageURL = "https://c.tenor.com/e_esKa2BR0EAAAAC/pokemon-battle-pokemon.gif";
+            imageURL = "/images/gen1.gif";
             break;
         case '2':
             limit = 100;
             offset = 151;
-            imageURL = "https://cutewallpaper.org/21/pokemon-background-gif/Pokemon-Gold-PC-Desktop-Background-Animations-UPDATED-.gif";
+            imageURL = "/images/gen2.gif";
             break;
 
         case '3':
             limit = 135;
             offset = 251;
-            imageURL = "https://i.gifer.com/DXwp.gif";
+            imageURL = "/images/gen3.gif";
             break;
         case '4':
             limit = 107;
             offset = 386;
-            imageURL = "https://www.simbasible.com/wp-content/uploads/2018/03/11-5.gif";
+            imageURL = "/images/gen4.gif";
             break;
 
         case '5':
             limit = 156;
             offset = 493;
-            imageURL = "https://pa1.narvii.com/7523/90722aa320ad6ed69c010293e41a42ee2e3864b4r1-500-364_hq.gif";
+            imageURL = "/images/gen5.gif";
             break;
         case '6':
             limit = 72;
             offset = 649;
-            imageURL = "https://31.media.tumblr.com/f82ce74f536c87ecbcab75b7862ccb27/tumblr_mt4j2cW4iQ1sxmzrgo1_500.gif";
+            imageURL = "/images/gen6.gif";
             break;
 
         case '7':
             limit = 88;
             offset = 721;
-            imageURL = "https://apptrigger.com/files/2016/05/sunmoon1.gif"
+            imageURL = "/images/gen7.gif"
             break;
         case '8':
             limit = 89;
             offset = 809;
-            imageURL = "https://thumbs.gfycat.com/CharmingIdolizedCob-size_restricted.gif"
+            imageURL = "/images/gen8.gif"
             break;
 
         default:
