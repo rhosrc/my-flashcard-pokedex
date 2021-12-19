@@ -154,12 +154,29 @@ footer {
 
 /* Header image */
 
+#splash-image {
+    display: inline-block;
+    position: relative;
+}
+
 .splash img {
     max-height: 200px;
     width: auto;
     height: auto;
     margin-bottom: 25px;
+    position: relative;
+    
+    
+    
 }
+
+#play {
+    position: absolute;
+    right: 0;
+
+    
+}
+
 
 /* Smartphone size */
 

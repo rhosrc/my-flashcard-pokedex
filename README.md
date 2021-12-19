@@ -1,6 +1,6 @@
-# My Flashcard Pokédex
+# Anime Time
 
-A simple encyclopedia app for Pokédex entries! Test your knowledge of Pokémon characteristics.
+An app for browsing anime titles and tracking episode completion! 
 
 ## Technologies Used
 
