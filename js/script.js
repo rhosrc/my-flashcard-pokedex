@@ -101,7 +101,6 @@ let secondColor;
 
 const $form = $('form');
 const $dex = $('#dex-section');
-// const $card = $('.card .front');
 const $splash = $('.splash');
 const $top = $('#page-up');
 
@@ -116,23 +115,21 @@ $(document).on('click', '.card', function (event) {
     $(this).toggleClass('flipped');
 })
 
-// $(document).ready(function () {
 
-    $(document).on('click', '#play', function (event) {
-        $('#loop').trigger('play');
-        $('#play').hide();
-        $('#pause').css({display: "inline"});
-        $('#pause').show();
-    })
 
-    $(document).on('click', '#pause', function (event) {
-        $('#loop').trigger('pause');
-        $('#pause').hide();
-        $('#play').css({display: "inline"});
-        $('#play').show();
-    })
-   
-// })
+$(document).on('click', '#play', function (event) {
+    $('#loop').trigger('play');
+    $('#play').hide();
+    $('#pause').css({display: "inline"});
+    $('#pause').show();
+})
+
+$(document).on('click', '#pause', function (event) {
+    $('#loop').trigger('pause');
+    $('#pause').hide();
+    $('#play').css({display: "inline"});
+    $('#play').show();
+})
 
 
 
