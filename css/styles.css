@@ -159,6 +159,10 @@ footer {
     position: relative;
 }
 
+/* #play{
+    display: inline-block;
+} */
+
 .splash img {
     max-height: 200px;
     width: auto;
@@ -170,13 +174,12 @@ footer {
     
 }
 
-#play {
+
+
+#play, #pause {
     position: absolute;
     right: 0;
-
-    
 }
-
 
 /* Smartphone size */
 

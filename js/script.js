@@ -104,7 +104,7 @@ const $dex = $('#dex-section');
 // const $card = $('.card .front');
 const $splash = $('.splash');
 const $top = $('#page-up');
-const $play =$('#play');
+
 
 
 
@@ -117,22 +117,24 @@ $(document).on('click', '.card', function (event) {
 })
 
 $(document).ready(function () {
+
     $(document).on('click', '#play', function (event) {
-        let audio = new Audio(musicURL);
-        const $this = $(this);
-        $this.toggleClass('active');
-        if($this.hasClass('active')){
-            $('#play').attr('src', "https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-mute-multimedia-kiranshastry-lineal-kiranshastry-1.png")
-            audio.play();
-            audio.loop = true;        
-        } else {
-            $('#play').attr('src', "https://img.icons8.com/ios/60/000000/play--v1.png")
-            audio.pause();
-        }
-        })
+        $('#loop').trigger('play');
+        $('#play').hide();
+        $('#pause').css({display: "inline"});
+        $('#pause').show();
+    })
+
+    $(document).on('click', '#pause', function (event) {
+        $('#loop').trigger('pause');
+        $('#pause').hide();
+        $('#play').css({display: "inline"});
+        $('#play').show();
+    })
+   
 })
 
-    
+
 
 // Functions
 
@@ -154,26 +156,26 @@ function handleSubmit(event) {
             limit = 151;
             offset = 0;
             imageURL = "/images/gen1.gif";
-            musicURL ="/music/gen1.mp3";
+            musicURL = "/music/gen1.mp3";
             break;
         case '2':
             limit = 100;
             offset = 151;
             imageURL = "/images/gen2.gif";
-            musicURL ="/music/gen2.mp3";
+            musicURL = "/music/gen2.mp3";
             break;
 
         case '3':
             limit = 135;
             offset = 251;
             imageURL = "/images/gen3.gif";
-            musicURL ="/music/gen3.mp3";
+            musicURL = "/music/gen3.mp3";
             break;
         case '4':
             limit = 107;
             offset = 386;
             imageURL = "/images/gen4.gif";
-            musicURL ="/music/gen4.mp3";
+            musicURL = "/music/gen4.mp3";
             break;
 
         case '5':
@@ -206,14 +208,18 @@ function handleSubmit(event) {
     // adds a scroll down and scroll up link to page...
 
     $splash.html(
-        `<div id="splash-image">
+
+        `
+        <div id="splash-image">
+        <audio id="loop" src=${musicURL}></audio>
         <a href="#drop-down">
-                <img id="top" src=${imageURL}></a>
-                <img id="play" class="active" src="https://img.icons8.com/ios/60/000000/play--v1.png"/>
-        
+            <img id="top" src=${imageURL}>
+        <a/>
+            <img id="play" src="https://img.icons8.com/ios/60/000000/play--v1.png"/>
+        <img id="pause" style="display: none" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-mute-multimedia-kiranshastry-lineal-kiranshastry-1.png"
         </div>
         `
-        
+
     )
     $top.html(
         `<a href="#top"><p>TOP</p></a>`
@@ -315,7 +321,7 @@ function monRender() {
 
             let searchOtherType = pokemonTypes.find(obj => {
                 return obj.name === secondType.name;
-            })            
+            })
             secondColor = searchOtherType.hex;
         }
 
