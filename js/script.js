@@ -115,8 +115,6 @@ $(document).on('click', '.card', function (event) {
     $(this).toggleClass('flipped');
 })
 
-
-
 $(document).on('click', '#play', function (event) {
     $('#loop').trigger('play');
     $('#play').hide();
