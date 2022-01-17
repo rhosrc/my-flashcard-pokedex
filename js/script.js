@@ -116,7 +116,7 @@ $(document).on('click', '.card', function (event) {
     $(this).toggleClass('flipped');
 })
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
     $(document).on('click', '#play', function (event) {
         $('#loop').trigger('play');
@@ -132,14 +132,14 @@ $(document).ready(function () {
         $('#play').show();
     })
    
-})
+// })
 
 
 
 // Functions
 
 function handleSubmit(event) {
-
+$('#loop').trigger('pause');
     // Clears previously selected information, scrolls to top, records generation selected...
 
     monArray = [];
@@ -182,22 +182,26 @@ function handleSubmit(event) {
             limit = 156;
             offset = 493;
             imageURL = "/images/gen5.gif";
+            musicURL = "/music/gen5.mp3";
             break;
         case '6':
             limit = 72;
             offset = 649;
             imageURL = "/images/gen6.gif";
+            musicURL = "/music/gen6.mp3";
             break;
 
         case '7':
             limit = 88;
             offset = 721;
             imageURL = "/images/gen7.gif"
+            musicURL = "https://od.lk/s/MjVfMjUxOTgxNzJf/gen7b.mp3";
             break;
         case '8':
             limit = 89;
             offset = 809;
-            imageURL = "/images/gen8.gif"
+            imageURL = "/images/gen8.gif";
+            musicURL = "/music/gen8.mp3";
             break;
 
         default:
