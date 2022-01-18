@@ -134,8 +134,8 @@ $(document).on('click', '#pause', function (event) {
 // Functions
 
 function handleSubmit(event) {
-$('#loop').trigger('pause');
-    // Clears previously selected information, scrolls to top, records generation selected...
+// Clears previously selected information, scrolls to top, records generation selected...
+    $('#loop').trigger('pause');
 
     monArray = [];
     dexArray = [];

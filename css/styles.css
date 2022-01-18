@@ -159,21 +159,13 @@ footer {
     position: relative;
 }
 
-/* #play{
-    display: inline-block;
-} */
-
 .splash img {
     max-height: 200px;
     width: auto;
     height: auto;
     margin-bottom: 25px;
     position: relative;
-    
-    
-    
 }
-
 
 #play, #pause {
     position: absolute;
