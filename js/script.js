@@ -116,6 +116,7 @@ $(document).on('click', '.card', function (event) {
 })
 
 $(document).on('click', '#play', function (event) {
+    $('#loop').prop('volume', 0.02)
     $('#loop').trigger('play');
     $('#play').hide();
     $('#pause').css({display: "inline"});
