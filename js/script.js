@@ -103,6 +103,7 @@ const $form = $('form');
 const $dex = $('#dex-section');
 const $splash = $('.splash');
 const $top = $('#page-up');
+const $loop =$('#loop');
 
 
 
@@ -116,7 +117,8 @@ $(document).on('click', '.card', function (event) {
 })
 
 $(document).on('click', '#play', function (event) {
-    $('#loop').prop('volume', 0.02)
+    $loop.loop = true;
+    $('#loop').prop('volume', 0.01);
     $('#loop').trigger('play');
     $('#play').hide();
     $('#pause').css({display: "inline"});
