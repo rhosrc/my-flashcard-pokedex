@@ -103,7 +103,6 @@ const $form = $('form');
 const $dex = $('#dex-section');
 const $splash = $('.splash');
 const $top = $('#page-up');
-const $loop =$('#loop');
 
 
 
@@ -117,8 +116,7 @@ $(document).on('click', '.card', function (event) {
 })
 
 $(document).on('click', '#play', function (event) {
-    $loop.loop = true;
-    $('#loop').prop('volume', 0.01);
+    $('#loop').prop('volume', 0.05);
     $('#loop').trigger('play');
     $('#play').hide();
     $('#pause').css({display: "inline"});
@@ -139,6 +137,7 @@ $(document).on('click', '#pause', function (event) {
 function handleSubmit(event) {
 // Clears previously selected information, scrolls to top, records generation selected...
     $('#loop').trigger('pause');
+    
 
     monArray = [];
     dexArray = [];
@@ -213,7 +212,7 @@ function handleSubmit(event) {
 
         `
         <div id="splash-image">
-        <audio id="loop" src=${musicURL}></audio>
+        <audio id="loop" loop="loop" src=${musicURL}></audio>
         <a href="#drop-down">
             <img id="top" src=${imageURL}>
         <a/>
