@@ -4,10 +4,10 @@ A simple encyclopedia app for Pokédex entries! Brush up on your knowledge of Po
 
 ## Technologies Used
 
--HTML 5 \
--CSS3 \
--JavaScript and jQuery \
--The Pokémon API (https://pokeapi.co/api/v2/pokemon)
+- HTML 5 \
+- CSS3 \
+- JavaScript and jQuery \
+- The Pokémon API (https://pokeapi.co/api/v2/pokemon)
 
 ## Screenshots
 

@@ -25,7 +25,6 @@ h1 {
 
 main {
     flex-grow: 1;
-    overflow: auto;
 }
 
 #dex-section {
@@ -52,9 +51,6 @@ main {
     margin: 25px auto 50px;
 }
 
-/* footer {
-    margin: 25px auto;
-} */
 
 .pkmn-container {
 
