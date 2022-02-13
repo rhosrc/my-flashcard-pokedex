@@ -236,6 +236,7 @@ function apiCall() {
     $.ajax(`${BASE_URL}?limit=${limit}&offset=${offset}`)
         .then(function (monURL) {
             monAPI = monURL;
+            // console.log(monAPI.results)
 
             for (api of monAPI.results) {
                 $.ajax(api.url)
@@ -272,6 +273,7 @@ function apiCall() {
                             })
                     })
             }
+
             setTimeout(() => {
                 dexArray.sort((a, b) => (a.id > b.id) ? 1 : -1);
 

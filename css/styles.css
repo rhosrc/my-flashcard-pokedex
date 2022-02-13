@@ -3,6 +3,9 @@ body {
     background-color: #ff8585;
     color: white;
     font-family: Helvetica;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 * {
@@ -21,7 +24,7 @@ h1 {
 }
 
 main {
-    flex-grow: 1;
+    flex: 1;
 }
 
 #dex-section {
@@ -196,7 +199,7 @@ footer {
 
 /* Tablet size */
 
-@media (min-width: 736px) and (max-width: 768px) {
+@media (min-width: 736px) and (max-width: 920px) {
     #drop-down {
         display: block;
         justify-content: center;
