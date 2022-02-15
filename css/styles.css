@@ -206,7 +206,7 @@ main {
 
 @media (min-width: 736px) and (max-width: 920px) {
     main {
-        flex-grow: .5;
+        flex-grow: .75;
     }
     
     #drop-down {
