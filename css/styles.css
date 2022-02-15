@@ -205,6 +205,10 @@ main {
 /* Tablet size */
 
 @media (min-width: 736px) and (max-width: 920px) {
+    main {
+        flex-grow: .5;
+    }
+    
     #drop-down {
         display: block;
         justify-content: center;
