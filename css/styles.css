@@ -3,7 +3,7 @@ body {
     background-color: #ff8585;
     color: white;
     font-family: Helvetica;
-    min-height: 95vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
 }
