@@ -177,7 +177,7 @@ main {
 @media (max-width: 736px) {
 
     main {
-        flex-grow: .5;
+        flex-grow: 0;
     }
 
     .splash img {
