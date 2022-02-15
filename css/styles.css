@@ -176,8 +176,8 @@ main {
 
 @media (max-width: 736px) {
 
-    h1 {
-        margin-bottom: 0;
+    body {
+        display: static;
     }
 
     .splash img {
