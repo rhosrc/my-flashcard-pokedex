@@ -3,7 +3,7 @@ body {
     background-color: #ff8585;
     color: white;
     font-family: Helvetica;
-    min-height: 90vh;
+    min-height: 95vh;
     display: flex;
     flex-direction: column;
 }
@@ -175,6 +175,10 @@ main {
 /* Smartphone size */
 
 @media (max-width: 736px) {
+
+    main {
+        flex-grow: 0;
+    }
 
     .splash img {
         max-width: 300px;
