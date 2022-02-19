@@ -196,7 +196,7 @@ function handleSubmit(event) {
             limit = 88;
             offset = 721;
             imageURL = "/images/gen7.gif"
-            musicURL = "https://od.lk/s/MjVfMjUxOTgxNzJf/gen7b.mp3";
+            musicURL = "/music/gen7.mp3";
             break;
         case '8':
             limit = 89;
