@@ -119,14 +119,18 @@ $(document).on('click', '#play', function (event) {
     $('#loop').prop('volume', 0.05);
     $('#loop').trigger('play');
     $('#play').hide();
-    $('#pause').css({display: "inline"});
+    $('#pause').css({
+        display: "inline"
+    });
     $('#pause').show();
 })
 
 $(document).on('click', '#pause', function (event) {
     $('#loop').trigger('pause');
     $('#pause').hide();
-    $('#play').css({display: "inline"});
+    $('#play').css({
+        display: "inline"
+    });
     $('#play').show();
 })
 
@@ -135,9 +139,9 @@ $(document).on('click', '#pause', function (event) {
 // Functions
 
 function handleSubmit(event) {
-// Clears previously selected information, scrolls to top, records generation selected...
+    // Clears previously selected information, scrolls to top, records generation selected...
     $('#loop').trigger('pause');
-    
+
 
     monArray = [];
     dexArray = [];
@@ -228,66 +232,32 @@ function handleSubmit(event) {
 
     // lastly, sends call to the Pokémon API.
 
-    apiCall();
+    getMonData();
 }
 
-function apiCall() {
+async function getMonData() {
+    const response = await fetch(`${BASE_URL}?limit=${limit}&offset=${offset}`);
+    const data = await response.json();
+    const details = await Promise.all(data.results.map(obj => fetch(obj.url).then(res => res.json())));
+    details.sort((a, b) => (a.id > b.id) ? 1 : -1);
+    monArray = monArray.concat(details);
+    getDexData()
+    monRender();
+}
 
-    $.ajax(`${BASE_URL}?limit=${limit}&offset=${offset}`)
-        .then(function (monURL) {
-            monAPI = monURL;
-            // console.log(monAPI.results)
-
-            for (api of monAPI.results) {
-                $.ajax(api.url)
-                    .then(function (data) {
-
-                        // Pushes each Pokémon object (containing properties for ID, type, "species," and physical information) into an array to be sorted
-
-                        monArray.push(data);
-                    })
-            }
-
-            setTimeout(() => {
-                monArray.sort((a, b) => (a.id > b.id) ? 1 : -1);
-
-                // Array is full of asynchronously pushed objects that need to be sorted. Once completed, information can be rendered.
-
-                monRender();
-            }, 3000);
-
-            for (api of monAPI.results) {
-                $.ajax(api.url)
-                    .then(function (data) {
-
-                        // The "species" property contains individual URLS to Pokédex species information, one property of which 
-                        // is referred to as "flavor text". First, we make a call for this detailed species information.
-
-                        $.ajax(data.species.url)
-                            .then(function (dexInfo) {
-
-                                // Returns objects with properties like happiness, capture rate, etc. (What we will later be needing is "flavor text entries."
-                                // Similar to with the monAPI call, we push each detailed "species" object into an array. 
-
-                                dexArray.push(dexInfo);
-                            })
-                    })
-            }
-
-            setTimeout(() => {
-                dexArray.sort((a, b) => (a.id > b.id) ? 1 : -1);
-
-                // Again, the array of Pokémon "species" is out of order due to the asynchronous nature of the calls, and must be sorted.
-                // Then we can render the Dex info that will be on the back of the cards.
-
-                dexRender();
-
-            }, 3000);
-        })
+async function getDexData() {
+    const response = await fetch(`${BASE_URL}?limit=${limit}&offset=${offset}`);
+    const data = await response.json();
+    const details = await Promise.all(data.results.map(obj => fetch(obj.url).then(res => res.json())));
+    const speciesDeets = await Promise.all(details.map(obj => fetch(obj.species.url).then(res => res.json())));
+    speciesDeets.sort((a, b) => (a.id > b.id) ? 1 : -1);
+    dexArray = dexArray.concat(speciesDeets);
+    dexRender();
 }
 
 
 function monRender() {
+    // console.log(monArray)
     for (mon of monArray) {
 
         // The name of each Pokémon's primary type is matched via find method to the Types array defined up at line 5. 
