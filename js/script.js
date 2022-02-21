@@ -221,7 +221,7 @@ function handleSubmit(event) {
             <img id="top" src=${imageURL}>
         <a/>
             <img id="play" src="https://img.icons8.com/ios/60/000000/play--v1.png"/>
-        <img id="pause" style="display: none" src="https://img.icons8.com/external-kiranshastry-lineal-kiranshastry/64/000000/external-mute-multimedia-kiranshastry-lineal-kiranshastry-1.png"
+        <img id="pause" style="display: none" src="https://img.icons8.com/ios/50/000000/pause--v1.png"
         </div>
         `
 
