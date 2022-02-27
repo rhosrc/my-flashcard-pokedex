@@ -157,52 +157,59 @@ function handleSubmit(event) {
             limit = 151;
             offset = 0;
             imageURL = "/images/gen1.gif";
-            musicURL = "/music/gen1.mp3";
+            // musicURL = "/music/gen1.mp3";
+            musicURL = 'https://od.lk/s/MjVfMjUxOTgxNjZf/gen1.mp3';
             break;
         case '2':
             limit = 100;
             offset = 151;
             imageURL = "/images/gen2.gif";
-            musicURL = "/music/gen2.mp3";
+            // musicURL = "/music/gen2.mp3";
+            musicURL = 'https://od.lk/s/MjVfMjQ4NzM0MzJf/03%20Title%20Screen%20%28Gold%20%26%20Silver%20Version%29.mp3';
             break;
 
         case '3':
             limit = 135;
             offset = 251;
             imageURL = "/images/gen3.gif";
-            musicURL = "/music/gen3.mp3";
+            // musicURL = "/music/gen3.mp3";
+            musicURL = 'https://od.lk/s/MjVfMjUxOTgxNjhf/gen3.mp3';
             break;
         case '4':
             limit = 107;
             offset = 386;
             imageURL = "/images/gen4.gif";
-            musicURL = "/music/gen4.mp3";
-            break;
+            // musicURL = "/music/gen4.mp3";
+            musicURL = 'https://od.lk/s/MjVfMjUxOTgxNjlf/gen4.mp3';
 
         case '5':
             limit = 156;
             offset = 493;
             imageURL = "/images/gen5.gif";
-            musicURL = "/music/gen5.mp3";
+            // musicURL = "/music/gen5.mp3";
+            musicURL = 'https://od.lk/s/MjVfMjUxOTgxNzBf/gen%205.mp3';
             break;
         case '6':
             limit = 72;
             offset = 649;
             imageURL = "/images/gen6.gif";
-            musicURL = "/music/gen6.mp3";
+            // musicURL = "/music/gen6.mp3";
+            musicURL = 'https://od.lk/s/MjVfMjUxOTgxNzFf/gen6.mp3';
             break;
 
         case '7':
             limit = 88;
             offset = 721;
             imageURL = "/images/gen7.gif"
-            musicURL = "/music/gen7.mp3";
+            // musicURL = "/music/gen7.mp3";
+            musicURL = 'https://od.lk/s/MjVfMjUxOTgxNzJf/gen7b.mp3';
             break;
         case '8':
             limit = 89;
             offset = 809;
             imageURL = "/images/gen8.gif";
-            musicURL = "/music/gen8.mp3";
+            // musicURL = "/music/gen8.mp3";
+            musicURL = 'https://od.lk/s/MjVfMjU2ODYyMDNf/gen8.mp3';
             break;
 
         default:
