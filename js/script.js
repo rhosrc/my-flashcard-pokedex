@@ -115,25 +115,26 @@ $(document).on('click', '.card', function (event) {
     $(this).toggleClass('flipped');
 })
 
-$(document).on('click', '#play', function (event) {
-    $('#loop').prop('volume', 0.05);
-    $('#loop').trigger('play');
-    $('#play').hide();
-    $('#pause').css({
-        display: "inline"
-    });
-    $('#pause').show();
-})
+$(document).ready(function () {
+    $(document).on('click', '#play', function (event) {
+        $('#loop').prop('volume', 0.05);
+        $('#loop').trigger('play');
+        $('#play').hide();
+        $('#pause').css({
+            display: "inline"
+        });
+        $('#pause').show();
+    })
 
-$(document).on('click', '#pause', function (event) {
-    $('#loop').trigger('pause');
-    $('#pause').hide();
-    $('#play').css({
-        display: "inline"
-    });
-    $('#play').show();
+    $(document).on('click', '#pause', function (event) {
+        $('#loop').trigger('pause');
+        $('#pause').hide();
+        $('#play').css({
+            display: "inline"
+        });
+        $('#play').show();
+    })
 })
-
 
 
 // Functions
